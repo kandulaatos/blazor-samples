@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using BlazorDemos;
 
+
+
 namespace ej2_blazor_querybuilderdata
 {
     public class HardWareDetails

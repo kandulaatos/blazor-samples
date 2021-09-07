@@ -49,7 +49,7 @@ stages:
         version: $(dotnetCoreVersion)
 
     - task: DotNetCoreCLI@2
-      displayName: Restore
+      displayName: NuGet restore
       inputs:
         command: 'restore'
         publishWebProjects: true
@@ -96,6 +96,11 @@ stages:
       runOnce:
         deploy:
           steps:
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App: $(webAppName)'
             inputs:
